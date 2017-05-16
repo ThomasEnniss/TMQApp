@@ -1,14 +1,17 @@
 package com.example.weabros.tmqapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
 
-public class Questionaire extends AppCompatActivity {
+public class Questionaire extends AppCompatActivity implements QuestionaireA.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -50,6 +53,30 @@ public class Questionaire extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        if (findViewById(R.id.questionaire_fragment_container) != null) {
+
+
+            if (savedInstanceState != null) {
+                return;
+            }
+
+
+            QuestionaireA firstFragment = new QuestionaireA();
+
+
+            firstFragment.setArguments(getIntent().getExtras());
+
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.questionaire_fragment_container, firstFragment).commit();
+        }
+
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Log.d("Questionaire",uri.toString());
+    }
 }

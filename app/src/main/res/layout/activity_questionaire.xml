@@ -16,15 +16,13 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
 
-    <ScrollView
+
+
+    <FrameLayout
+        android:id="@+id/questionaire_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    </FrameLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </RelativeLayout>
-    </ScrollView>
 
 </LinearLayout>
